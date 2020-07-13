@@ -4,10 +4,15 @@
 
 {% block content %}
     <h1>Main data</h1>
-    {{ df|safe }}
+    {% if df %}
+        {{ df }}
+    {% endif %}
     <hr>
     <div>
-        <form action="" method = "POST" class="ui form">
+        {% if error_message %}
+            {{ error_message }}
+        {% endif %}
+        <form action="" method="POST" class="ui form">
             {% csrf_token %}
             <div class="field">
                 <label>Choose a chart type</label>
@@ -34,7 +39,7 @@
                     </div>
                 </div>
             </div>
-             <button class="ui primary button" type="submit">Select</button>
+            <button class="ui primary button" type="submit">Select</button>
         </form>
 
     </div>
